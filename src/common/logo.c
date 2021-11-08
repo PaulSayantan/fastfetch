@@ -348,6 +348,25 @@ static void initLogoVoid(FFinstance* instance)
     instance->config.logo.colors[1] = "\033[30m"; //black
 }
 
+static void initLogoUbuntuMini(FFinstance* instance) {
+    instance->config.logo.lines = 
+        "$1            .-.              \n"
+        "$2      .-'``$1(   )             \n"
+        "$3   ,`\\ $2\\    $1`-`$2.             \n"
+        "$3  /   \\ $2'``-.   `            \n"
+        "$1 $2.-.  $3,       $2`___:          \n"
+        "$1$2(   )  $3:      $1  ___          \n"
+        "$1 $2`-`  $3`       $1 ;   :         \n"
+        "$1  $3 \\   / $1,..-`   ,           \n"
+        "$1   $3 `./ $1/     $3.-.$1`           \n"
+        "$1        `-..-$3(   )           \n"
+        "$1              $3`-`            ";
+    instance->config.logo.colors[0] = "\033[31m"; //red
+    instance->config.logo.colors[1] = "\033[37m"; //white
+    instance->config.logo.colors[2] = "\033[33m"; //yellow
+
+}
+
 static bool loadLogoSet(FFinstance* instance, const char* logo)
 {
     if(instance->config.logo.freeable)
@@ -388,7 +407,7 @@ static bool loadLogoSet(FFinstance* instance, const char* logo)
     else if(strcasecmp(logo, "pop") == 0 || strcasecmp(logo, "pop_os") == 0)
         initLogoPop(instance);
     else if(strcasecmp(logo, "ubuntu") == 0)
-        initLogoUbuntu(instance);
+        initLogoUbuntuMini(instance);
     else if(strcasecmp(logo, "void") == 0)
         initLogoVoid(instance);
     else
@@ -606,7 +625,7 @@ void ffPrintLogos(FFinstance* instance)
     FF_LOGO_PRINT(manjaro, initLogoManjaro)
     FF_LOGO_PRINT(mint, initLogoMint)
     FF_LOGO_PRINT(pop, initLogoPop)
-    FF_LOGO_PRINT(ubuntu, initLogoUbuntu)
+    FF_LOGO_PRINT(ubuntu, initLogoUbuntuMini)
     FF_LOGO_PRINT(void, initLogoVoid)
 }
 
